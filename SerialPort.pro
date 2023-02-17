@@ -4,11 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT  += serialport
-QT += printsupport
+QT += core gui serialport
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+#QMAKE_LFLAGS += -static
+QMAKE_CXXFLAGS += "-fno-sized-deallocation"
 TARGET = tinyserial
 TEMPLATE = app
 
@@ -25,12 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        serialport.cpp \
-    aboutdialog.cpp
+    aboutdialog.cpp \
+    mainwindow.cpp
 
-HEADERS  += serialport.h \
+HEADERS  += \
     global.h \
-    aboutdialog.h
+    aboutdialog.h \
+    mainwindow.h
 
 FORMS    += serialport.ui \
     aboutdialog.ui
